@@ -6,18 +6,24 @@
  * ========================================================================= */
 
 const MODELS = [
-  { id: "maba6", name: "MA/BA6 Gen4", en: "Mask & Bond Aligner", automation: "Semi-Automated", wafer: '6"', tag: "标准 · 半自动" },
-  { id: "maba8", name: "MA/BA8 Gen4", en: "Mask & Bond Aligner", automation: "Semi-Automated", wafer: '8"', tag: "标准 · 半自动" },
+  { id: "mjb4", name: "MJB4", en: "Mask Aligner", automation: "Manual", wafer: '4"', tag: "手动", img: "images/mjb4.jpg" },
+  { id: "maba6", name: "MA/BA6 Gen4", en: "Mask & Bond Aligner", automation: "Semi-Automated", wafer: '6"', tag: "标准 · 半自动", img: "images/maba-gen4.jpg" },
+  { id: "maba8", name: "MA/BA8 Gen4", en: "Mask & Bond Aligner", automation: "Semi-Automated", wafer: '8"', tag: "标准 · 半自动", img: "images/maba-gen4.jpg" },
+  { id: "ma12", name: "MA12 Gen3", en: "Mask Aligner", automation: "Semi-Automated", wafer: '12"', tag: "200 / 300 mm · 半自动", img: "images/ma12.jpg" },
 ];
 
 const SECTIONS = [
   {
     id: "exposure_area", zh: "曝光范围", en: "Exposure Area", type: "radio",
     options: [
+      { id: "4round", zh: "4英寸圆形", en: '4" Round', models: ["mjb4"] },
+      { id: "4sq", zh: "4英寸方形", en: '4" Squared', models: ["mjb4"] },
       { id: "6round", zh: "6英寸圆形", en: '6" Round', models: ["maba6"] },
       { id: "6sq", zh: "6英寸方形", en: '6" Squared', models: ["maba6"] },
       { id: "8round", zh: "8英寸圆形", en: '8" Round', models: ["maba8"] },
       { id: "8sq", zh: "8英寸方形", en: '8" Squared', models: ["maba8"] },
+      { id: "12round", zh: "12英寸圆形", en: '12" Round', models: ["ma12"] },
+      { id: "12sq", zh: "12英寸方形", en: '12" Squared', models: ["ma12"] },
     ],
   },
   {
@@ -138,6 +144,7 @@ function renderModelSelector() {
   wrap.innerHTML = MODELS.map((m) => `
     <label class="model-card ${m.id === state.model ? "active" : ""}">
       <input type="radio" name="model" value="${m.id}" ${m.id === state.model ? "checked" : ""} />
+      <div class="model-img"><img src="${m.img}" alt="${m.name}" loading="lazy" /></div>
       <div class="model-name">${m.name}</div>
       <div class="model-sub">${m.en} · ${m.automation} · 晶圆 ${m.wafer}</div>
       <span class="model-tag">${m.tag}</span>
