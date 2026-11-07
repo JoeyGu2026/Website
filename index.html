@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SUSS 光刻机配置器 · MA/BA6 Gen4 · MA/BA8 Gen4</title>
+  <meta name="description" content="SUSS MicroTec MA/BA6 Gen4 与 MA/BA8 Gen4 掩模/键合对准机配置工具" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">SUSS</div>
+      <div class="brand-text">
+        <h1>掩模 / 键合对准机配置器</h1>
+        <p>Mask &amp; Bond Aligner Configurator — MA/BA6 Gen4 · MA/BA8 Gen4</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <label>客户名称 <input type="text" id="customer-name" placeholder="Customer Name" /></label>
+      <label>负责人 <input type="text" id="owner-name" placeholder="Owner Name" /></label>
+      <label>日期 <input type="date" id="quote-date" /></label>
+    </div>
+  </header>
+
+  <nav class="toolbar">
+    <button class="btn" id="btn-import" title="导入配置 (JSON)">导入 Import</button>
+    <button class="btn" id="btn-reset" title="清空所有选择">重置 Reset All</button>
+    <button class="btn" id="btn-export" title="导出配置 (JSON)">导出 Export</button>
+    <button class="btn" id="btn-toggle-notes" title="显示 / 隐藏说明">显示 / 隐藏说明</button>
+    <button class="btn btn-primary" id="btn-spec" title="生成规格书 (打印)">生成规格书</button>
+    <button class="btn btn-primary" id="btn-quote" title="生成报价单摘要">生成报价单</button>
+    <input type="file" id="import-file" accept="application/json" hidden />
+  </nav>
+
+  <main class="layout">
+    <section class="config-panel">
+      <div class="panel-head">
+        <h2>设备型号</h2>
+        <p>选择目标平台，曝光范围与选项将随之适配</p>
+      </div>
+      <div class="model-selector" id="model-selector">
+        <!-- JS 渲染型号选择 -->
+      </div>
+
+      <div id="sections" class="sections">
+        <!-- JS 渲染各配置项 -->
+      </div>
+
+      <section class="about">
+        <h2>产品信息</h2>
+        <p>
+          MA/BA Gen4 系列为半自动掩模 / 键合对准平台，配备 MO Exposure Optics<sup>®</sup> 远心照明，
+          提供优异的照度均匀性与工艺稳定性；分辨率可达 <strong>0.8 µm</strong>（硬 / 软 / 真空接触模式）。
+          可选 DirectAlign<sup>®</sup> 技术通过实时图像检测实现 <strong>0.5 µm</strong> 套刻精度；
+          支持正面 (TSA)、背面 (BSA) 与红外 (IR) 对准。
+        </p>
+        <p>
+          典型应用：先进封装、MEMS/NEMS、3D 集成、化合物半导体、LED、微光学、AR 与光电子器件。
+        </p>
+        <p class="about-sources">数据来源：SUSS MicroTec 官方产品页（见页面底部链接）。</p>
+      </section>
+    </section>
+
+    <aside class="summary">
+      <div class="summary-head">
+        <h2>已选配置</h2>
+        <span id="summary-count" class="badge">0</span>
+      </div>
+      <div id="summary-list" class="summary-list">
+        <p class="summary-empty">尚未选择任何配置项</p>
+      </div>
+      <div class="summary-foot">
+        <div id="summary-customer" class="summary-meta"></div>
+        <button class="btn btn-block" id="btn-print">打印 / 保存为 PDF</button>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="footer">
+    <p>本配置器仅供项目内部选型与报价参考，非 SUSS 官方工具。</p>
+    <p>
+      产品信息来源：
+      <a href="https://www.suss.com/en/products-solutions/mask-aligner/ma-ba-gen4-series" target="_blank" rel="noopener">MA/BA Gen4 Series — SUSS MicroTec</a>
+      ·
+      <a href="https://www.suss.com/en/products-solutions/imaging-solutions/mask-alignment" target="_blank" rel="noopener">Mask Alignment — SUSS MicroTec</a>
+    </p>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
